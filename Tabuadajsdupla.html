@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html {
+            height: 100%;
+            background-color: rgb(0, 0, 155);
+        }
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            flex-direction: column;
+        }
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 80%;
+        }
+        #resultado{
+            display: flex;
+            gap: 20px;
+            height: 100%;
+            width: 100%;
+            background-color: rgb(0, 0, 155);
+            justify-content: center; 
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            width: 20%;
+            height: 60%;
+            background-color: rgb(255, 255, 255);
+            border-radius: 5px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gerador de Tabuada</h1>
+        <button onclick="gerarTabuada()">Multiplicar</button><br>
+    </header>
+    <main>
+        <div id="resultado"></div>
+    </main>
+    <script>
+        function gerarTabuada(){
+            resultado = document.getElementById('resultado');
+            let texto = "";
+            for (let t=1; t <= 10; t++){
+                texto += `<div class='container'>Tabuada do ${t}<br>`;
+                for (let i=1; i <= 10; i++){
+                    let conta = t * i;
+                    texto += `${t} * ${i} = ${conta}<br>`;
+                }
+                texto += "</div>"
+            }
+
+            resultado.innerHTML = `${texto}`
+        }
+    </script>
+</body>
+</html>
