@@ -8,6 +8,7 @@
         body, html {
             height: 100%;
             background-color: rgb(0, 0, 155);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         header{
             display: flex;
@@ -36,14 +37,23 @@
 
         .container {
             width: 20%;
-            height: 60%;
+            height: 70%;
             background-color: rgb(255, 255, 255);
-            border-radius: 5px;
-            font-size: 20px;
+            border-radius: 15px;
+            font-size: 19px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: black;
+            border: 2px rgb(0, 0, 0) solid;
+        }
+
+        button {
+            border: 2px black solid;
+            border-radius: 7px;
+            width: 10%;
+            height: 35px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -51,14 +61,22 @@
     <header>
         <h1>Gerador de Tabuada</h1>
         <button onclick="gerarTabuada()">Multiplicar</button><br>
+        <button onclick="ocultar()">Ocultar</button><br>
     </header>
     <main>
         <div id="resultado"></div>
     </main>
     <script>
+        let execucao = false;
+        let texto = "";
         function gerarTabuada(){
+            if (execucao){
+                alert ("Já foi executado");
+                return;
+            }
+            execucao = true;
             resultado = document.getElementById('resultado');
-            let texto = "";
+            texto = "";
             for (let t=1; t <= 10; t++){
                 texto += `<div class='container'>Tabuada do ${t}<br>`;
                 for (let i=1; i <= 10; i++){
@@ -66,8 +84,14 @@
                     texto += `${t} * ${i} = ${conta}<br>`;
                 }
                 texto += "</div>"
+
             }
 
+            resultado.innerHTML = `${texto}`
+        }
+        function ocultar(){
+            execucao = false;
+            texto = "";
             resultado.innerHTML = `${texto}`
         }
     </script>
